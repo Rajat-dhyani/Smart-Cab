@@ -41,7 +41,7 @@ class LearningAgent(Agent):
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
 
-        # self.epsilon = self.epsilon - 0.05
+        #self.epsilon = self.epsilon - 0.05
 
         self.trials += 1
 
@@ -88,8 +88,7 @@ class LearningAgent(Agent):
 
         maxQ = None
 
-        action = max(self.Q[state], key=self.Q[state].get)
-        maxQ = self.Q[state][action]
+        maxQ = max(self.Q[state].values())
 
         return maxQ 
 
@@ -129,26 +128,28 @@ class LearningAgent(Agent):
 
         if not self.learning:
             action = self.valid_actions[random.randint(0, 3)]
-            # print action, " ", self.valid_actions
+            print action, " ", self.valid_actions
         else:
             rand = random.randint(0,3)
             if rand < self.epsilon * 100:
                 action = self.valid_actions[rand]
             else:
+                actions = []
                 for key, value in self.Q[state].iteritems():
                     if value == self.get_maxQ(state):
-                        action = key
-                        # print action, " ", " ", self.get_maxQ(state=state)
- 
+                        actions.append(key)
+
+                action = actions[random.randint(0, len(actions) - 1)]
+
         return action
 
 
     def learn(self, state, action, reward):
         """ The learn function is called after the agent completes an action and
-            receives an award. This function does not consider future rewards 
+            receives an award. This function does not consider future rewards
             when conducting learning. """
 
-        ########### 
+        ###########
         ## Done ##
         ###########
         # When learning, implement the value iteration update rule
@@ -165,11 +166,11 @@ class LearningAgent(Agent):
             environment for a given trial. This function will build the agent
             state, choose an action, receive a reward, and learn if enabled. """
 
-        state = self.build_state()           # Get current state
-        self.createQ(state)                  # Create 'state' in Q-table
-        action = self.choose_action(state)   # Choose an action
-        reward = self.env.act(self, action)  # Receive a reward
-        self.learn(state, action, reward)    # Q-learn
+        state = self.build_state()          # Get current state
+        self.createQ(state)                 # Create 'state' in Q-table
+        action = self.choose_action(state)  # Choose an action
+        reward = self.env.act(self, action) # Receive a reward
+        self.learn(state, action, reward)   # Q-learn
 
         return
         
