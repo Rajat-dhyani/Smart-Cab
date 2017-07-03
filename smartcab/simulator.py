@@ -129,7 +129,7 @@ class Simulator(object):
 
             # Flip testing switch
             if not testing:
-                if total_trials > 100: # Must complete minimum 20 training trials
+                if total_trials > 1000: # Must complete minimum 20 training trials
                     if a.learning:
                         if a.epsilon < tolerance: # assumes epsilon decays to 0
                             testing = True
