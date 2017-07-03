@@ -24,6 +24,7 @@ class LearningAgent(Agent):
         ###########
         # Set any additional class parameters as needed
         self.trials = 0.0
+        self.a = 0.05
 
 
     def reset(self, destination=None, testing=False):
@@ -41,14 +42,14 @@ class LearningAgent(Agent):
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
 
-        #self.epsilon = self.epsilon - 0.05
+        # self.epsilon = self.epsilon - 0.05
 
         self.trials += 1
 
         # self.epsilon = self.alpha ** self.trials
         # self.epsilon = 1/(self.trials**2)
         # self.epsilon = math.exp(-1 * self.alpha * self.trials)
-        self.epsilon = math.cos(self.alpha * self.trials)
+        self.epsilon = math.cos(self.a * self.trials)
 
         if testing:
             self.epsilon = 0
@@ -85,8 +86,6 @@ class LearningAgent(Agent):
         ## Done  ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-
-        maxQ = None
 
         maxQ = max(self.Q[state].values())
 
@@ -130,16 +129,16 @@ class LearningAgent(Agent):
             action = self.valid_actions[random.randint(0, 3)]
             print action, " ", self.valid_actions
         else:
-            rand = random.randint(0,3)
-            if rand < self.epsilon * 100:
-                action = self.valid_actions[rand]
+            rand = random.random()
+            if rand < self.epsilon:
+                action = random.choice(self.valid_actions)
             else:
                 actions = []
                 for key, value in self.Q[state].iteritems():
                     if value == self.get_maxQ(state):
                         actions.append(key)
 
-                action = actions[random.randint(0, len(actions) - 1)]
+                action = random.choice(actions)
 
         return action
 
@@ -185,7 +184,7 @@ def run():
     #   verbose     - set to True to display additional output from the simulation
     #   num_dummies - discrete number of dummy agents in the environment, default is 100
     #   grid_size   - discrete number of intersections (columns, rows), default is (8, 6)
-    env = Environment(verbose=True)
+    env = Environment()
     
     ##############
     # Create the driving agent
@@ -199,7 +198,7 @@ def run():
     # Follow the driving agent
     # Flags:
     #   enforce_deadline - set to True to enforce a deadline metric
-    env.set_primary_agent(agent,enforce_deadline=True)
+    env.set_primary_agent(agent, enforce_deadline=True)
 
     ##############
     # Create the simulation
@@ -208,7 +207,7 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay=0.01, log_metrics=True,optimized=True)
+    sim = Simulator(env, display=False, update_delay=0.000001, log_metrics=True, optimized=True)
     
     ##############
     # Run the simulator
