@@ -8,6 +8,8 @@ In the not-so-distant future, taxicab companies across the United States no long
 
 *Although smartcabs have become the transport of choice, concerns have arose that a self-driving agent might not be as safe or reliable as human drivers, particularly when considering city traffic lights and other vehicles. To alleviate these concerns, My task as an employee for a national taxicab company is to use reinforcement learning techniques to construct a demonstration of a smartcab operating in real-time to prove that both safety and reliability can be achieved.*
 
+![Smart-Cab](https://github.com/Rajat-dhyani/Smart-Cab/blob/master/rajat-dhyani-smart-cab.png)
+
 ## Project Definitions
 
 ### Environment
