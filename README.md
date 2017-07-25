@@ -26,6 +26,10 @@ The smartcab will receive positive or negative rewards based on the action it ha
 ### Project Highlights
 *In this project i have applied reinforcement learning techniques for a self-driving agent in a simplified world to aid it in effectively reaching its destinations in the allotted time. I have first investigated the environment, the agent operates in, by constructing a very basic driving implementation. Once my agent was successful at operating within the environment, i have then identified each possible state the agent can be in when considering such things as traffic lights and oncoming traffic at each intersection. With states identified, i have then implemented a Q-Learning algorithm for the self-driving agent to guide the agent towards its destination within the allotted time. Finally, i have improved upon the Q-Learning algorithm to find the best configuration of learning and exploration factors to ensure the self-driving agent is reaching its destinations with consistently positive results.*
 
+**Achievements**
+* Applied reinforcement learning to build a simulated vehicle navigation agent. 
+* Achieved A+ rating in both safety and reliability of smart-cab.
+
 Things i have learnt by completing this project:
 * How to apply reinforcement learning techniques: Q-learning algorithms.
 * How to investigate the environment and train our agent to operate in the specified environment.
@@ -37,6 +41,8 @@ Things i have learnt by completing this project:
 * <strong> Project 1 : </strong> *[Boston's Houses Prediction](https://github.com/Rajat-dhyani/boston_housing)*
 * <strong> Project 2 : </strong> *[Charity Donors Prediction](https://github.com/Rajat-dhyani/charity_donors)*
 * <strong> Project 3 : </strong> *[Creating Customer Segments](https://github.com/Rajat-dhyani/creating_customer_segments)*
+* <strong> Project 5 : </strong> *[ImageNetBot](https://github.com/Rajat-dhyani/ImageNetBot)*
+* <strong> Project 6 : </strong> *[Stock Price Predictor](https://github.com/Rajat-dhyani/Stock-Price-Predictor)*
 
 ## Software and Libraries
 This project uses the following software and Python libraries:
